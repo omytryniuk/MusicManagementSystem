@@ -1,0 +1,83 @@
+﻿@model Assignment8.Controllers.AlbumWithDetail
+
+@{
+    ViewBag.Title = "Album Details";
+}
+
+<h2>Album details - @Model.Name</h2>
+
+<div>
+  
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)<hr />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReleaseDate)<hr />
+        </dd>
+
+        <dt>
+            Album cover art
+        </dt>
+
+        <dd>
+            <img src="@Html.DisplayFor(model => model.UrlAlbum)" class="img-thumbnail" alt="The picture is not available" width="114" height="89"><hr />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genre)<hr />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            <div class="panel panel-default panel-body">
+                @Html.Raw(Model.Description)
+            </div> <hr />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TracksCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TracksCount)<hr />
+        </dd>
+        <dt>The list of tracks</dt>
+        <dd>
+            @if (Model.Tracks.Count() > 0)
+            {
+                foreach (var e in Model.Tracks)
+                {
+                    <span>@e.Name</span><br />
+                }
+            }
+            else
+            {
+                <span>(none)</span>
+            }
+        </dd>
+
+        
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index") |
+    @Html.ActionLink("Add a track", "AddTrack", new { id = Model.Id })
+</p>

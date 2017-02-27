@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace Assignment8.Controllers
+{
+    public class HomeController : Controller
+    {
+        // Reference to the manager object
+        Manager m = new Manager();
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult About()
+        {
+            return View("about");
+        }
+        public ActionResult Contact()
+        {
+            return View("contact");
+        }
+    }
+}

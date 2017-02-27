@@ -1,0 +1,93 @@
+﻿@model Assignment8.Controllers.ArtistWithDetail
+
+@{
+    ViewBag.Title = "Artist details";
+}
+
+<h2>Artist Details - @Html.DisplayFor(model => model.Name)</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)<hr/>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BirthName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BirthName)<hr />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BirthOrStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BirthOrStartDate)<hr />
+        </dd>
+
+        <dt>
+            Artist photo
+        </dt>
+
+        <dd>
+            <img src="@Html.DisplayFor(model => model.UrlArtist)" class="img-thumbnail" alt="The picture is not available" width="114" height="89" /> <hr />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genre)<hr />
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Profile)
+        </dt>
+
+        <dd>
+            <div class="panel panel-default panel-body">
+                @Html.Raw(Model.Profile)
+            </div> <hr />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AlbumsCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlbumsCount)<hr />
+        </dd>
+
+        <dt>The list of albums</dt>
+        <dd>
+            @if (Model.Albums.Count() > 0)
+            {
+                foreach (var e in Model.Albums)
+                {
+                    <span>@e.Name</span><br />
+                }
+            }
+            else
+            {
+                <span>(none)</span>
+            }
+        </dd><hr />
+                
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index") |
+    @Html.ActionLink("Add album for this artist", "AddAlbum", new { id = Model.Id }) |
+    @Html.ActionLink("Add media", "AddMediaItem", new { id = Model.Id }) |
+    @Html.ActionLink("Details with media items", "DetailsWithMediaItemInfo", new { id = Model.Id }) 
+</p>
